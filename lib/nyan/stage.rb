@@ -72,7 +72,7 @@ module Nyan
     def clear_buffer
       @buffer = Array.new(height) do
         Array.new(width) do
-          { :char => SPACE, :ansi => SPACE }
+          { :char => SPACE, :colourized_char => SPACE }
         end
       end
     end
@@ -80,12 +80,15 @@ module Nyan
     def write_to_buffer(sprite)
       sprite.lines.each_with_index do |line, i|
         line_y = sprite.y + i
+        previous_colourized_char = nil
         if line_y.between?(top, bottom)
           line.chomp.chars.each_with_index do |char, j|
             char_x = sprite.x + j
             if char_x.between?(left, right) && char != Nyan::SPACE
               colourized_char = Colour.colourize(char)
+              colourized_char = Nyan::BLOCK if colourized_char == previous_colourized_char
               @buffer[line_y][char_x] = { :char => char, :colourized_char => colourized_char }
+              previous_colourized_char = colourized_char
             end
           end
         end
@@ -94,12 +97,12 @@ module Nyan
 
     def print_buffer
       key = coloured? ? :colourized_char : :char
-      output.print move(0, 0)
-      @buffer.each do |row|
+      @buffer.each_with_index do |row, i|
+        output.print move(i, 0)
         output.print clear_line
         output.print reset
         output.print row.map { |h| h[key] }.join
-        output.down
+        output.print "\n" unless i == bottom
       end
     end
   end

@@ -122,7 +122,7 @@ describe Nyan::Stage do
       sprite.y = stage.bottom
       sprite.frames = %w(X)
       stage.render
-      output.string.should =~ /X$/
+      output.string.unansi.should =~ /X$/
     end
 
     context "when coloured" do
