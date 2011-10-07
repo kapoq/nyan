@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+nyan_dir = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
+$LOAD_PATH.unshift(nyan_dir) unless $LOAD_PATH.include?(nyan_dir)
+require "nyan"
+
+print cls
+flight = Nyan::Flight.new
+loop do
+  flight.next!
+end
+  
