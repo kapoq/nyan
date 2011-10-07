@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Nyan::VERSION
   s.authors     = ["dave@kapoq.com"]
   s.email       = ["dave@kapoq.com"]
-  s.homepage    = "https://github.com/kapoq/nyan_formatter"
+  s.homepage    = "https://github.com/kapoq/nyan"
   s.summary     = "Nyan Cat flies across your terminal while your RSpec specs run!"
   s.description = "Your favourite aging meme is reheated as an RSpec custom formatter. For entertainment purposes only. WARNING: enterprise-ready"
 
