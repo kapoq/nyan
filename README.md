@@ -5,6 +5,8 @@ Your favourite aging meme is reheated as an RSpec custom formatter.
 
 For entertainment purposes only.
 
+![NYAN?](https://github.com/kapoq/nyan/raw/master/docs/nyan_animated.gif)
+
 FAQ
 ---
 
@@ -35,6 +37,7 @@ Probably need a new graphics card or something.
 Requirements
 ------------
 
+* Your terminal window should have a **black background** and be at least 180 columns x 50 rows.
 * RSpec 2 (tested against RSpec 2.6)
 
 Install
@@ -57,7 +60,7 @@ Or if you want the joy of Nyan without running specs, use the binary:
 
     $ nyan
 
-Your terminal should be at least 180 columns x 50 rows.
+Your terminal should be at least
 
 Development
 -----------
