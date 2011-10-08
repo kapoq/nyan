@@ -99,8 +99,6 @@ module Nyan
       key = coloured? ? :colourized_char : :char
       @buffer.each_with_index do |row, i|
         output.print move(i, 0)
-        output.print clear_line
-        output.print reset
         output.print row.map { |h| h[key] }.join
         output.print "\n" unless i == bottom
       end
