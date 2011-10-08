@@ -1,4 +1,4 @@
-require "ansi"
+require 'ansi'
 include ANSI::Code
 
 module Nyan

@@ -5,7 +5,7 @@ module Nyan
     SECTIONS    = 5
 
     COLOURS = %w(1 2 3 4 5)
-    BLANK   = ([Nyan::SPACE] * BEND_LENGTH).join
+    BLANK   = (Array(Nyan::SPACE) * BEND_LENGTH).join
 
     FRAME_HEIGHT = COLOURS.length * BAND_HEIGHT + 1
     FRAME_WIDTH  = SECTIONS * BEND_LENGTH
@@ -13,10 +13,12 @@ module Nyan
     TOTAL_LENGTH = SECTIONS * BEND_LENGTH
     TOTAL_HEIGHT = BAND_HEIGHT * COLOURS.length
 
-    SLICE = COLOURS.each_with_object([]) do |colour, slice|
+    SLICE = COLOURS.inject([]) do |slice, colour|
+      bend = (Array(colour) * BEND_LENGTH)
       BAND_HEIGHT.times do
-        slice << "#{colour}" * BEND_LENGTH
+        slice << bend.join
       end
+      slice
     end    
 
     def self.frame(is_peak = true)

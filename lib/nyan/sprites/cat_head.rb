@@ -20,7 +20,7 @@ module Nyan
 EOF
 
     def self.to_frames
-      @frames ||= Array(SHAPE)
+      @frames ||= [SHAPE]
     end
   end
 end

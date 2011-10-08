@@ -8,7 +8,7 @@ require "nyan/stage"
 require "nyan/flight"
 
 module Nyan
-  BLOCK   = "\u2588"
+  BLOCK   = "\xE2\x96\x88"
   SPACE   = "\x20"
   NEWLINE = "\n"
   

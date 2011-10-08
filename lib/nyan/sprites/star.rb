@@ -75,7 +75,7 @@ X.........X
 EOF
 
     def self.to_frames
-      @frames ||= SHAPE_LIST.gsub(/\./, SPACE).gsub(/X/, BLOCK).split(/--./m)
+      @frames ||= SHAPE_LIST.gsub(/\./, SPACE).gsub(/X/, "@").split(/--./m)
     end
   end
 end

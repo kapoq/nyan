@@ -32,6 +32,15 @@ module Nyan
     end
 
     def next!
+      maybe_add_a_twinkly_star
+      @stage.play!
+      while Time.now - @tick_time < 0.09; end
+      @tick_time = Time.now
+    end
+
+    private
+
+    def maybe_add_a_twinkly_star
       if rand > 0.85
         speed = rand > 0.5 ? 2 : 5
         star = Sprite.new(:x           => @stage.width,
@@ -43,9 +52,6 @@ module Nyan
                           :animation   => Proc.new { self.x -= @options[:speed] })
         @stage.add_sprite(star)
       end
-      @stage.play!
-      loop until Time.now - @tick_time >= 0.09
-      @tick_time = Time.now
     end
   end
 end
