@@ -54,13 +54,14 @@ Alternatively install directly:
 Usage
 -----
 
+Your terminal window should have a **black background** and be at
+least 180 columns x 50 rows.
+
     $ rspec spec -f Nyan::Formatter
 
 Or if you want the joy of Nyan without running specs, use the binary:
 
     $ nyan
-
-Your terminal should be at least
 
 Development
 -----------
