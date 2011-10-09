@@ -32,7 +32,7 @@ module Nyan
 
     def render
       clear_buffer
-      sprites.sort.each { |s| write_to_buffer(s) }
+      sprites.sort.reverse.each { |s| write_to_buffer(s) }
       print_buffer
     end
 
@@ -69,36 +69,50 @@ module Nyan
     def clear_buffer
       @buffer = Array.new(height) do
         Array.new(width) do
-          { :char => SPACE, :colourized_char => SPACE }
+          SPACE
         end
       end
     end
     
     def write_to_buffer(sprite)
-      sprite.lines.each_with_index do |line, i|
-        line_y = sprite.y + i
-        previous_colourized_char = nil
-        if line_y.between?(top, bottom)
-          line.chomp.chars.each_with_index do |char, j|
-            char_x = sprite.x + j
-            if char_x.between?(left, right) && char != Nyan::SPACE
-              colourized_char = Colour.colourize(char)
-              colourized_char = Nyan::BLOCK if colourized_char == previous_colourized_char
-              @buffer[line_y][char_x] = { :char => char, :colourized_char => colourized_char }
-              previous_colourized_char = colourized_char
+      sprite.lines.each_with_index do |row, i|
+        last_char_with_colour = nil
+        y = sprite.y + i
+        if y.between?(top, bottom)
+          row.chomp.chars.each_with_index do |char, j|
+            x = sprite.x + j
+            if x.between?(left, right)
+              if char_writeable?(char) && buffer_writeable_at_point?(x, y)
+                @buffer[y][x] = if coloured?
+                                  coloured_char = Colour.colourize(char)
+                                  if coloured_char == last_char_with_colour
+                                    BLOCK
+                                  else
+                                    last_char_with_colour = coloured_char
+                                  end
+                                else
+                                  char
+                                end
+              else
+                last_char_with_colour = nil
+              end
             end
           end
         end
       end
     end
 
+    def char_writeable?(char)
+      SPACE != char
+    end
+      
+    def buffer_writeable_at_point?(x, y)
+      SPACE == @buffer[y][x]
+    end
+
     def print_buffer
-      key = coloured? ? :colourized_char : :char
-      @buffer.each_with_index do |row, i|
-        output.print move(i, 0)
-        output.print row.map { |h| h[key] }.join
-        output.print "\n" unless i == bottom
-      end
+     output.print move(top, left)
+     output.print @buffer.join
     end
   end
 end

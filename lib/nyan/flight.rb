@@ -23,11 +23,6 @@ module Nyan
                             :y => @cat_head.y - 2,
                             :z => @cat_head.z - 1,
                             :frames => Nyan::PopTart.to_frames)
-
-      @line = Sprite.new(:x => 0, :y => 0, :z => 10, :frames => %w(1111111111))
-      @dot  = Sprite.new(:x => 5, :y => 0, :z => 11, :frames => %w(2))
-      @stage.add_sprite(@line)
-      @stage.add_sprite(@dot)
       
       @stage.add_sprite(@rainbow)
       @stage.add_sprite(@cat_head)
