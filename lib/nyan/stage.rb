@@ -1,9 +1,6 @@
 module Nyan
   class Stage
     include Shape
-
-    SPACE   = "\x20"
-    NOTHING = ""
     
     attr_reader :output, :height, :width
     

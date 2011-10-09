@@ -11,6 +11,7 @@ module Nyan
   BLOCK   = "\xE2\x96\x88"
   SPACE   = "\x20"
   NEWLINE = "\n"
+  NOTHING = ""
   
   require "nyan/sprites/rainbow"
   require "nyan/sprites/cat_head"
