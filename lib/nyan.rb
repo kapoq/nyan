@@ -2,6 +2,7 @@ require "nyan/version"
 
 require "nyan/colour"
 require "nyan/shape"
+require "nyan/buffer"
 require "nyan/sprite"
 require "nyan/stage"
 
