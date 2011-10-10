@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description = "Your favourite aging meme is reheated as an RSpec custom formatter. For entertainment purposes only. WARNING: enterprise-ready"
 
   s.add_dependency "ansi"
-  s.add_dependency "rspec"
+  s.add_dependency "rspec", "~> 2"
   
   s.add_development_dependency "guard-rspec"
   s.add_development_dependency "rake"
