@@ -27,14 +27,12 @@ module Nyan
       @stage.add_sprite(@rainbow)
       @stage.add_sprite(@cat_head)
       @stage.add_sprite(@pop_tart)
-      @tick_time = Time.now
     end
 
     def next!
       maybe_add_a_twinkly_star
       @stage.play!
-      while Time.now - @tick_time < @framerate; end
-      @tick_time = Time.now
+      sleep(@framerate)
     end
 
     private
